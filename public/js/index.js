@@ -1,6 +1,11 @@
 
 $('#workspace').load('./news.html');
 $(document).ready(function() {
+	if(localStorage.getItem("login") !== null){
+		$("#buttonLogin").hide();
+    	$("#buttonSingUp").hide(); 
+     	$("#buttonExit").show();
+	}
 
 	var li0 = $('#li0');
 	var li1 = $('#li1');
@@ -65,8 +70,84 @@ $(document).ready(function() {
 
     });
 
+	buttonExit.click( function(event){ 
+    	$("#buttonLogin").show();
+    	$("#buttonSingUp").show(); 
+    	$("#buttonExit").hide(); 
+    	localStorage.clear(); 
+    });
 
+	saveSignUp.click( function(){ 
+  		if($("#forsignUp").find("input[name ='name']").val() == "" || $("#forsignUp").find("input[name ='login']").val() == "" ||
+  		   $("#forsignUp").find("input[name ='password']").val() == "" || $("#forsignUp").find("input[name ='repeatPassword']").val() == "" ||
+  		   $("#forsignUp").find("input[name ='email']").val() == "" || $("#forsignUp").find("input[name ='phone']").val() == "380"){
+  		alert("Не все поля заполнины!");
+		}
+		else{
+  			if($("#forsignUp").find("input[name ='password']").val()===$("#forsignUp").find("input[name ='repeatPassword']").val()){
+  				var now = new Date();
+  				$.ajax({
+            		url: "/registration",
+            		method: "POST",
+            		data:  
+            			{
+                			name:  $("#forsignUp").find("input[name ='name']").val(),
+                			login:  $("#forsignUp").find("input[name ='login']").val(),
+                			password:  $("#forsignUp").find("input[name ='password']").val(),
+                			email: $("#forsignUp").find("input[name ='email']").val(),
+                			phone:  $("#forsignUp").find("input[name ='phone']").val(),
+                			verification: window.btoa("" + now.getFullYear() + now.getMonth() + now.getHours() + now.getDate() + 
+                				 		  now.getMinutes() + now.getSeconds() + now.getMilliseconds()),
+            			}
+    				}).then(function(res) {
+        				alert(res);
+        				if(res != "Пользователь с таким логином уже сущестует!"){
+        					$('#loginModal').modal("hide");
+        				}
+    				});
+  				}
+  			else{
+  				alert("Введенные пароли не совпадают!");
+  			}
+  		}
+    });
 
+  	saveLogin.click( function(){ 
+  		$.ajax({
+        	url: "/login",
+            method: "POST",
+            data:  
+            	{
+                	login:  $("#forLogin").find("input[name ='login']").val(),
+                	password:  $("#forLogin").find("input[name ='password']").val(),
+            	}
+    		 }).then(function(res) {
+    		 	if(res == "Не верно введен логин или пароль!"){
+    		 		alert(res);
+    		 	}
+    		 	else{
+    		 	res.forEach(function(data) {
+            	var login = data.login;
+            	var password = data.password;
+            	var verification  = data.verification;
+            	var rights = data.rights;
+            	var name = data.name;
+            	var client_id = data.client_id;
+        		localStorage.setItem("login", login);
+    		 	localStorage.setItem("password", password);
+    		 	localStorage.setItem("verification", verification);
+    		 	localStorage.setItem("rights", rights);
+    		 	localStorage.setItem("name", name);
+    		 	localStorage.setItem("client_id", client_id);
+    		 	$("#buttonLogin").hide();
+    		 	$("#buttonSingUp").hide(); 
+    		 	$("#buttonExit").show();
+    		 	$('#loginModal').modal("hide");
+    			});  	
+    		}
+  				
+		});
+	});
 
 
 
