@@ -59,3 +59,12 @@ app.post('/login', function (req, res) {
 			}
 	});
 });
+
+
+app.get('/pizza', function (req, res, next) {
+  connection.query('SELECT *  FROM pizza;', 
+  function (error, results, fields) {
+     if (error) throw error;
+	   res.send(results);
+  });
+});

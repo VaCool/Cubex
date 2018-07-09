@@ -8,7 +8,6 @@
 </head>
 <body>
 	<div class="top">
-
 	<div class="container">
   		<div class="row">
     		<div class="col-lg">
@@ -18,94 +17,77 @@
     			<div class="phones">
       				<div class="row">
       					<div class="col-lg-2">
-      						<p>(050)</p>
-							<p>(097)</p>
-							<p>(063)</p>
+                  <p>(050)</p>
+                  <p>(097)</p>
+                  <p>(063)</p>
       					</div>
       					<div class="col-lg">
-      						<p id="phone">666-0-777</p>
+                  <p id="phone">666-0-777</p>
       					</div>	
       				</div>
-      			</div>	
-    		</div>
+            </div>	
+          </div>
     		<div class="col-lg">
     			<div class="enter">
       			<button id="buttonLogin"><p><i class="fa fa-sign-in " aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>Вход</p></button>
-				<button id="buttonSingUp"><p><i class="fa fa-id-card" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Регистрация</p></button>
-				<button id="buttonExit" style="display:none"><p><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Выход</p></button>
-				</div>
+				    <button id="buttonSingUp"><p><i class="fa fa-id-card" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Регистрация</p></button>
+				    <button id="buttonExit" style="display:none"><p><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Выход</p></button>
+				  </div>
     		</div>
   		</div>
-	</div>
+    </div>
+    <div class="navbar">
+		  <p><div class="btn-group btn-group-lg" role="group" >
+  			   <button type="button" id="li0" class="btn btn-success">Главная</button>
+  			   <button type="button" id="li1" class="btn btn-success">Пицца</button>
+  			   <button type="button" id="li2" class="btn btn-success">Паста</button>
+  			   <button type="button" id="li3" class="btn btn-success">Ризотто</button>
+  			   <button type="button" id="li4" class="btn btn-success">Десерты</button>
+  			   <button type="button" id="li5" class="btn btn-success">Отзывы</button>
+  			   <button type="button" id="li6" class="btn btn-success">Корзина</button>
+  			   <button type="button" id="li7" class="btn btn-success">Кабинет</button>
+		  </div></p>
+    </div>
+  </div>
 
-	<div class="navbar">
-		<p>
-		<div class="btn-group btn-group-lg" role="group" >
-  			<button type="button" id="li0" class="btn btn-success">Главная</button>
-  			<button type="button" id="li1" class="btn btn-success">Пицца</button>
-  			<button type="button" id="li2" class="btn btn-success">Паста</button>
-  			<button type="button" id="li3" class="btn btn-success">Ризотто</button>
-  			<button type="button" id="li4" class="btn btn-success">Десерты</button>
-  			<button type="button" id="li5" class="btn btn-success">Отзывы</button>
-  			<button type="button" id="li6" class="btn btn-success">Корзина</button>
-  			<button type="button" id="li7" class="btn btn-success">Кабинет</button>
-		</div>
-		</p>
-	</div>
-	</div>
-
-<div class="empty">&nbsp; &nbsp;</div>
-<div class="workspace" id="workspace"></div>
-
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="navbarRegistration" >
-          <div class="row">
-            <div class="col" id="loginon"><a id="login">Вход</a></div>
-            <div class="col" id="signUpon"><a id="signUp">Регистрация</a></div>
+  <div class="empty">&nbsp; &nbsp;</div>
+  <div class="workspace" id="workspace"></div>
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="navbarRegistration" >
+            <div class="row">
+              <div class="col" id="loginon"><a id="login">Вход</a></div>
+              <div class="col" id="signUpon"><a id="signUp">Регистрация</a></div>
+            </div>
           </div>
         </div>
-    </div>
-      <div class="modal-body" style="display:none">
-  <div id="forLogin" >
-     <div class="row">
-    <div class="col-6"><span>Логин:</span></div> <div class="col-6"><input type="text" name="login" size="20"></div>
-    <div class="col-6"><span>Пароль:</span></div> <div class="col-6"><input type="password" name="password" size="20"></div>
-    </div>
-    <div class="forMiddleButton"><button type="button" class="btn btn-primary" id="saveLogin">Вход</button></div>
-    
-  </div>
-  <div id="forsignUp"  style="display:none">
-    <div class="row">
-      <div class="col-6"><span>Имя:</span></div> <div class="col-6"><input type="text" name="name" size="20"></div>
-      <div class="col-6""><span>Логин:</span></div> <div class="col-6""><input type="text" name="login" size="20"> </div>
-      <div class="col-6""><span>Пароль:</span></div> <div class="col-6""><input type="password" name="password" size="20"></div>
-      <div class="col-6""><span>Поторите пароль:</span></div> <div class="col-6""><input type="password" name="repeatPassword" size="20"></div>
-      <div class="col-6""><span>E-mail:</span></div> <div class="col-6""><input type="email" name="email" size="20"></div>
-      <div class="col-6""><span>Номер телефона:</span></div> <div class="col-6""><input type="text" name="phone" size="20"></div>
-    </div>
-    <div class="forMiddleButton"><button type="button" class="btn btn-primary" id="saveSignUp">Регистрация</button></div>
-  </div>
-
-
+        <div class="modal-body">
+          <div id="forLogin" style="display:none">
+            <div class="row">
+              <div class="col-6"><span>Логин:</span></div> <div class="col-6"><input type="text" name="login" size="20"></div>
+              <div class="col-6"><span>Пароль:</span></div> <div class="col-6"><input type="password" name="password" size="20"></div>
+            </div>
+            <div class="forMiddleButton"><button type="button" class="btn btn-primary" id="saveLogin">Вход</button></div>
+          </div>
+          <div id="forsignUp" style="display:none">
+            <div class="row">
+              <div class="col-6"><span>Имя:</span></div> <div class="col-6"><input type="text" name="name" size="20"></div>
+              <div class="col-6""><span>Логин:</span></div> <div class="col-6""><input type="text" name="login" size="20"> </div>
+              <div class="col-6""><span>Пароль:</span></div> <div class="col-6""><input type="password" name="password" size="20"></div>
+              <div class="col-6""><span>Поторите пароль:</span></div> <div class="col-6""><input type="password" name="repeatPassword" size="20"></div>
+              <div class="col-6""><span>E-mail:</span></div> <div class="col-6""><input type="email" name="email" size="20"></div>
+              <div class="col-6""><span>Номер телефона:</span></div> <div class="col-6""><input type="text" name="phone" size="20"></div>
+            </div>
+            <div class="forMiddleButton"><button type="button" class="btn btn-primary" id="saveSignUp">Регистрация</button></div>
+          </div>
+        </div>
       </div>
-
     </div>
   </div>
-</div>
-
-
-
-
-
-
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
-
-<script type="text/javascript" src="./js/index.js"></script>
-<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script type="text/javascript" src="./js/index.js"></script>
+  <script type="text/javascript" src="./js/bootstrap.min.js"></script>
 </body>
 </html>

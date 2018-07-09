@@ -14,7 +14,7 @@
 	top:0;
 	width: 100%;
 	background: orange;
-	z-index: 999999;
+
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 30px;
 }
@@ -68,14 +68,15 @@
 	background: #4c2c2c;
 }
 
-.modal-body, .modal-header{
+#loginModal .modal-body, #loginModal .modal-header {
 	background: #826464;
-	
 }
-.modal-body input{
+
+
+#loginModal .modal-body input{
 	height:20px;
 }
-.modal-body span{
+#loginModal .modal-body span{
 	padding-top: 10px;
 	padding-bottom: 10px;
 	font-size: 120%;
@@ -87,10 +88,10 @@
 	padding-top: 15px;
 }
 
-.forMiddleButton button{
+#forMiddleButton button{
 	min-width: 100px;
 }
-.modal-header{
+#loginModal .modal-header{
 	padding: 0;
 	border-bottom: 0;
 

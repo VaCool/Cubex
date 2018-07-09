@@ -2,10 +2,64 @@
 <html>
 <head>
 	<title></title>
+	<link type="text/css" href="./css/gallery.css" rel="stylesheet" media="all" />
+
 </head>
 <body>
+<div id="category">
+     <h1>Пицца</h1>
+     <a rel="all" class="current">Все</a> 
+     <a rel="first">Мясные</a> 
+     <a rel="second">Вегетерианские</a> 
+     <a rel="popular">Популярные</a> 
+     <a rel="new">Новинки</a> 
+</div>
+<div class="menu">
+	<ul id="menu">
+	</ul>
+</div>
 
+<div style="display:none" id="template">
+    <div class="elements" >
+		<li class="#" data-class>
+			<a href="#" data-id class="open_modal"><img  src="#" data-url-small title="подробнее" /> </a>
+			<h1 data-name-first class="firstName"></h1>
+			<p>вес: <span data-weight></span> гр. цена <span data-price></span> грн.</p>
+			<button class="buy"><p><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>Хочу!</p></button>
+ 			<div class="forModal" id="#" data-link style="display:none">
+ 				<div class="forClone">
+       			<img src="#" data-url-big title="подробнее" />
 
+       			<h1 data-name-second></h1>
+       			<p data-consist></p>
+       			<button class="buy"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>Хочу!</button> 
+			</div>
+			</div>
+		</li>
+	</div>
+</div>
 
+<div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+
+        	<div class="modal-body">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+        		<div class="nextPrev">
+        		<a href="#" class="previousButton">&#8249;</a>
+				<a href="#" class="nextButton">&#8250;</a>
+				</div>
+        		<div class="forGalley">
+        			
+        		</div>
+        	</div>	
+        </div>
+	</div>
+</div>
+
+<script type="text/javascript" src="./js/pizza.js"></script>
+<script type="text/javascript" src="./js/filter.js"></script>
 </body>
 </html>

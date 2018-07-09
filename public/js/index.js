@@ -62,7 +62,7 @@ $(document).ready(function() {
     });
 
 	buttonSingUp.click( function(event){ 
-        $('#loginModal').modal("show");
+        
         $('#forLogin').hide(); 
         $('#forsignUp').show();
         $('#signUp').parent().css({"background":"#826464", "border-bottom-left-radius":"20px", "border-top-left-radius":"20px"}); 
@@ -91,11 +91,11 @@ $(document).ready(function() {
             		method: "POST",
             		data:  
             			{
-                			name:  $("#forsignUp").find("input[name ='name']").val(),
-                			login:  $("#forsignUp").find("input[name ='login']").val(),
-                			password:  $("#forsignUp").find("input[name ='password']").val(),
+                			name: $("#forsignUp").find("input[name ='name']").val(),
+                			login: $("#forsignUp").find("input[name ='login']").val(),
+                			password: $("#forsignUp").find("input[name ='password']").val(),
                 			email: $("#forsignUp").find("input[name ='email']").val(),
-                			phone:  $("#forsignUp").find("input[name ='phone']").val(),
+                			phone: $("#forsignUp").find("input[name ='phone']").val(),
                 			verification: window.btoa("" + now.getFullYear() + now.getMonth() + now.getHours() + now.getDate() + 
                 				 		  now.getMinutes() + now.getSeconds() + now.getMilliseconds()),
             			}
@@ -126,33 +126,29 @@ $(document).ready(function() {
     		 		alert(res);
     		 	}
     		 	else{
-    		 	res.forEach(function(data) {
-            	var login = data.login;
-            	var password = data.password;
-            	var verification  = data.verification;
-            	var rights = data.rights;
-            	var name = data.name;
-            	var client_id = data.client_id;
-        		localStorage.setItem("login", login);
-    		 	localStorage.setItem("password", password);
-    		 	localStorage.setItem("verification", verification);
-    		 	localStorage.setItem("rights", rights);
-    		 	localStorage.setItem("name", name);
-    		 	localStorage.setItem("client_id", client_id);
-    		 	$("#buttonLogin").hide();
-    		 	$("#buttonSingUp").hide(); 
-    		 	$("#buttonExit").show();
-    		 	$('#loginModal').modal("hide");
+    		 		res.forEach(function(data) {
+            		var login = data.login;
+            		var password = data.password;
+            		var verification  = data.verification;
+            		var rights = data.rights;
+            		var name = data.name;
+            		var client_id = data.client_id;
+        			localStorage.setItem("login", login);
+    		 		localStorage.setItem("password", password);
+    		 		localStorage.setItem("verification", verification);
+    		 		localStorage.setItem("rights", rights);
+    		 		localStorage.setItem("name", name);
+    		 		localStorage.setItem("client_id", client_id);
+    		 		$("#buttonLogin").hide();
+    		 		$("#buttonSingUp").hide(); 
+    		 		$("#buttonExit").show();
+    		 		$('#loginModal').modal("hide");
     			});  	
-    		}
-  				
+    		} 				
 		});
 	});
 
-
-
 	function pageLoading(id){
-
 		switch(id) {
 			case 'li0':  
 				$('#workspace').load('./news.html');
