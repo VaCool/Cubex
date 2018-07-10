@@ -6,6 +6,10 @@
 
 </head>
 <body>
+	<div>
+	<button id="open_adminModal">Настройка</button>
+
+</div>
 <div id="category">
      <h1>Пицца</h1>
      <a rel="all" class="current">Все</a> 
@@ -14,8 +18,10 @@
      <a rel="popular">Популярные</a> 
      <a rel="new">Новинки</a> 
 </div>
+
 <div class="menu">
 	<ul id="menu">
+		
 	</ul>
 </div>
 
@@ -29,7 +35,6 @@
  			<div class="forModal" id="#" data-link style="display:none">
  				<div class="forClone">
        			<img src="#" data-url-big title="подробнее" />
-
        			<h1 data-name-second></h1>
        			<p data-consist></p>
        			<button class="buy"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>Хочу!</button> 
@@ -42,7 +47,6 @@
 <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
-
         	<div class="modal-body">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           			<span aria-hidden="true">&times;</span>
@@ -51,13 +55,125 @@
         		<a href="#" class="previousButton">&#8249;</a>
 				<a href="#" class="nextButton">&#8250;</a>
 				</div>
-        		<div class="forGalley">
-        			
+        		<div class="forGalley">       			
         		</div>
         	</div>	
         </div>
 	</div>
 </div>
+
+
+<div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+        	<div class="modal-body" style="text-align: center;">
+        		<h1>Панель управления</h1>
+        		<div class="container">
+  					<div class="row">
+    					<div class="col">
+    						<select disabled id="contentTitle">
+
+							</select>
+    					</div>
+						<div class="col">
+							<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  								<label class="btn btn-primary btn-sm active"  id="addContent">
+    								<input type="radio" name="options" autocomplete="off" checked> Добавить
+ 	 							</label>
+  								<label class="btn btn-warning btn-sm" id="changeContent">
+    								<input type="radio" name="options"  autocomplete="off"> Редактировать
+  								</label>
+  								<label class="btn btn-danger btn-sm" id="dellContent">
+    								<input type="radio" name="options"  autocomplete="off"> Удалить
+  								</label>
+							</div>
+						</div>					
+					</div>
+        		<div class="adminContent" style="text-align: center;">
+        			<form enctype='multipart/form-data' action="/upload" method="POST" id="uploadForm"> 
+        				<div class="container" id="forAddContainer" >
+        					<p>Название: <input type="text" name="name" size="35"> </p>
+  							<div class="row">
+    							<div class="col">
+        							Вес: <input type="text" name="weight" size="5"> 
+        						</div>
+        						<div class="col">
+									Цена: <input type="text" name="price" size="5"> 
+								</div>	
+								</div>
+   							<p>Картинка: 
+        						<input type="file" name="fileupload-input" /> <br/>
+   							</p>
+   							<div class="row">
+   								<div class="col">
+   									<div class="row">
+   										<div class="col" style="text-align: left;">
+   											Мясные:
+   										</div>
+   										<div class="col" style="text-align: right">
+   											<input type="checkbox" name="first">	
+   										</div>
+   									</div>
+   								</div>
+   								<div class="col">
+   									<div class="row">
+   										<div class="col" style="text-align: left;">
+   											Вегетерианские:
+   										</div>
+   										<div class="col" style="text-align: right">
+   											<input type="checkbox" name="second">	
+   										</div>
+   									</div>
+   								</div>
+   							</div>
+   							<div class="row">
+								<div class="col">
+   									<div class="row">
+   										<div class="col" style="text-align: left;">
+   											Популярные:
+   										</div>
+   										<div class="col" style="text-align: right">
+   											<input type="checkbox" name="popular">	
+   										</div>
+   									</div>
+   								</div>
+   								<div class="col">
+   									<div class="row">
+   										<div class="col" style="text-align: left;">
+   											Новинки:
+   										</div>
+   										<div class="col" style="text-align: right">
+   											<input type="checkbox" name="new">	
+   										</div>
+   									</div>
+   								</div>
+   							</div>
+
+						<span>Состав: </span><textarea type="text" name="consist" cols="40" rows="5"> </textarea> 
+					</form> 
+        		</div>
+        		<button id="buttonDo"><p><i class="fa fa-gavel" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;</i>Выполнить</p></button>
+        	</div>	
+        </div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script type="text/javascript" src="./js/pizza.js"></script>
 <script type="text/javascript" src="./js/filter.js"></script>
