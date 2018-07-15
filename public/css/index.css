@@ -9,7 +9,7 @@
 	margin-bottom: -20px;
 }
 .top {
-	min-width: 1300px;
+
 	position:fixed;
 	top:0;
 	width: 100%;
@@ -23,6 +23,7 @@
 }
 
 #logo{
+	max-width: 90%;
 	font-family: 'Vanessa';
 	font-weight: 500;
 	color: #d20073;

@@ -7,7 +7,7 @@ var fs = require("fs");
 var namefile;
 var connection = mysql.createConnection({
   	host     : 'localhost',
- 	user     : 'root',
+ 	  user     : 'root',
   	password : 'root',
   	database : 'vafood'
 });
@@ -20,7 +20,40 @@ var storageOfPizza = multer.diskStorage({
         namefile = "img/pizza/" + file.originalname;
     }
 });
+
+var storageOfPaste = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './public/img/paste/')
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.originalname);
+        namefile = "img/paste/" + file.originalname;
+    }
+});
+
+var storageOfRisotto = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './public/img/risotto/')
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.originalname);
+        namefile = "img/risotto/" + file.originalname;
+    }
+});
+
+var storageOfDessert = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './public/img/dessert/')
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.originalname);
+        namefile = "img/dessert/" + file.originalname;
+    }
+});
 var uploadPizza = multer({ storage: storageOfPizza });
+var uploadPaste = multer({ storage: storageOfPaste });
+var uploadRisotto = multer({ storage: storageOfRisotto });
+var uploadDessert = multer({ storage: storageOfDessert });
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/", express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -73,6 +106,26 @@ app.post('/login', function (req, res) {
 	});
 });
 
+app.post('/verification', function (req, res) {
+  console.log('hi');
+  var rights;
+  connection.query("SELECT rights FROM client WHERE client_id = '" + req.body.client_id + "' AND verification = '" + req.body.verification + "';", 
+  function (error, results, fields) {
+      if (error) throw error;
+      results.forEach(function(results) {
+        rights =  results.rights; 
+      }); 
+        if(rights == "admin"){
+          console.log('true');
+          res.send(true);
+        }
+        else{
+          console.log('false');
+          res.send(false);
+      }
+  });
+});
+
 /// pizza
 app.get('/pizza', function (req, res, next) {
   connection.query('SELECT *  FROM pizza;', 
@@ -87,13 +140,13 @@ app.post('/delpizza', function (req, res) {
     if (err) throw err;
     console.log("file deleted");
   });
-  connection.query("DELETE FROM `pizza` WHERE `pizza_id`=" + req.body.pizza_id + ";", 
+  connection.query("DELETE FROM `pizza` WHERE `pizza_id`=" + req.body.id + ";", 
   function (error, results, fields) {
     if (error) throw error;
   });
 });
 
-app.post('/uploadPizza', uploadPizza.single('fileupload-input'), function(req, res, next) {
+app.post('/uploadpizza', uploadPizza.single('fileupload-input'), function(req, res, next) {
   var categories = "all ";
   if(req.body.first == "on"){
     categories = categories + " " + "first";
@@ -115,12 +168,202 @@ app.post('/uploadPizza', uploadPizza.single('fileupload-input'), function(req, r
   res.send('ok')
 });
 
-app.post('/pizzaChange', function (req, res) {
+app.post('/changepizza', function (req, res) {
   connection.query("UPDATE pizza  SET  name = '" + req.body.name + "', weight = '" + req.body.weight + "', price = '" + 
                    req.body.price + "', consist = '" + req.body.consist +"', categories = '" + req.body.categories + 
-                   "' WHERE pizza_id = " + req.body.pizza_id +";", 
+                   "' WHERE pizza_id = " + req.body.id +";", 
   function (error, results, fields) {
     if (error) throw error;
   });
    res.send('ok')
 });
+
+
+
+
+ // паста
+app.get('/paste', function (req, res, next) {
+  connection.query('SELECT *  FROM paste;', 
+  function (error, results, fields) {
+    if (error) throw error;
+    res.send(results);
+  });
+});
+
+
+app.post('/delpaste', function (req, res) {
+  fs.unlink(req.body.URL, function (err) {
+  if (err) throw err;
+    console.log("file deleted");
+  });
+  connection.query("DELETE FROM `paste` WHERE `paste_id`=" + req.body.paste_id + ";", 
+  function (error, results, fields) {
+    if (error) throw error;
+  });
+});
+
+app.post('/uploadpaste', uploadPaste.single('fileupload-input'), function(req, res, next) {
+  var categories = "all ";
+  if(req.body.first == "on"){
+    categories = categories + " " + "first";
+  }
+  if (req.body.second == "on"){
+    categories = categories + " " + "second";
+  }
+  if (req.body.popular == "on"){
+    categories = categories + " " + "popular";
+  }   
+  if (req.body.new == "on"){
+    categories = categories + " " + "new";
+  }
+  connection.query("INSERT INTO paste VALUES(NULL, '" + req.body.name + "', '" + req.body.weight + "', '" + 
+                  req.body.price + "', '" + namefile + "', '" + req.body.consist + "', '" + categories + "');", 
+  function (error, results, fields) {
+    if (error) throw error;
+  });
+   res.send('ok')
+});
+
+app.post('/changepaste', function (req, res) {
+  connection.query("UPDATE paste  SET  name = '" + req.body.name + "', weight = '" + req.body.weight + "', price = '" + 
+                  req.body.price + "', consist = '" + req.body.consist +"', categories = '" + req.body.categories + 
+                  "' WHERE paste_id = " + req.body.paste_id +";", 
+  function (error, results, fields) {
+    if (error) throw error;
+  });
+   res.send('ok')
+});
+
+// конец пасты
+
+
+
+
+
+
+// ризотто
+app.get('/risotto', function (req, res, next) {
+connection.query('SELECT *  FROM risotto;', 
+function (error, results, fields) {
+    if (error) throw error;
+    res.send(results);
+});
+});
+
+
+app.post('/delrisotto', function (req, res) {
+  fs.unlink(req.body.URL, function (err) {
+    if (err) throw err;
+    console.log("file deleted");
+});
+  console.log(req.body.paste_id);
+
+connection.query("DELETE FROM `risotto` WHERE `risotto_id`=" + req.body.risotto_id + ";", 
+function (error, results, fields) {
+    if (error) throw error;
+
+});
+});
+
+app.post('/uploadrisotto', uploadRisotto.single('fileupload-input'), function(req, res, next) {
+  var categories = "all ";
+  if(req.body.first == "on"){
+    categories = categories + " " + "first";
+  }
+    if (req.body.second == "on"){
+        categories = categories + " " + "second";
+    }
+     if (req.body.popular == "on"){
+        categories = categories + " " + "popular";
+    }   
+    if (req.body.new == "on"){
+        categories = categories + " " + "new";
+    }
+  connection.query("INSERT INTO risotto VALUES(NULL, '" + req.body.name + "', '" + req.body.weight + "', '" + 
+  req.body.price + "', '" + namefile + "', '" + req.body.consist + "', '" + categories + "');", 
+function (error, results, fields) {
+    if (error) throw error;
+});
+
+   res.send('ok')
+});
+
+app.post('/changerisotto', function (req, res) {
+connection.query("UPDATE risotto  SET  name = '" + req.body.name + "', weight = '" + req.body.weight + "', price = '" + 
+  req.body.price + "', consist = '" + req.body.consist +"', categories = '" + req.body.categories + 
+  "' WHERE risotto_id = " + req.body.risotto_id +";", 
+function (error, results, fields) {
+    if (error) throw error;
+});
+
+   res.send('ok')
+
+});
+
+
+//конец риззото
+
+
+
+
+
+// десертф
+app.get('/dessert', function (req, res, next) {
+connection.query('SELECT *  FROM dessert;', 
+function (error, results, fields) {
+    if (error) throw error;
+    res.send(results);
+});
+});
+
+
+app.post('/deldessert', function (req, res) {
+  fs.unlink(req.body.URL, function (err) {
+    if (err) throw err;
+    console.log("file deleted");
+});
+  console.log(req.body.dessert_id);
+
+connection.query("DELETE FROM `dessert` WHERE `risotto_id`=" + req.body.dessert_id + ";", 
+function (error, results, fields) {
+    if (error) throw error;
+
+});
+});
+
+app.post('/uploaddessert', uploadDessert.single('fileupload-input'), function(req, res, next) {
+  var categories = "all ";
+  if(req.body.first == "on"){
+    categories = categories + " " + "first";
+  }
+    if (req.body.second == "on"){
+        categories = categories + " " + "second";
+    }
+     if (req.body.popular == "on"){
+        categories = categories + " " + "popular";
+    }   
+    if (req.body.new == "on"){
+        categories = categories + " " + "new";
+    }
+  connection.query("INSERT INTO dessert VALUES(NULL, '" + req.body.name + "', '" + req.body.weight + "', '" + 
+  req.body.price + "', '" + namefile + "', '" + req.body.consist + "', '" + categories + "');", 
+function (error, results, fields) {
+    if (error) throw error;
+});
+
+   res.send('ok')
+});
+
+app.post('/changedessert', function (req, res) {
+connection.query("UPDATE dessert  SET  name = '" + req.body.name + "', weight = '" + req.body.weight + "', price = '" + 
+  req.body.price + "', consist = '" + req.body.consist +"', categories = '" + req.body.categories + 
+  "' WHERE dessert_id = " + req.body.dessert_id +";", 
+function (error, results, fields) {
+    if (error) throw error;
+});
+
+   res.send('ok')
+
+});
+
+// конец десертов

@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div>
-	<button id="open_adminModal">Настройка</button>
+	<button id="open_adminModal" style="display:none">Настройка</button>
 
 </div>
 <div id="category">
@@ -95,10 +95,10 @@
         					<p>Название: <input type="text" name="name" size="35"> </p>
   							<div class="row">
     							<div class="col">
-        							Вес: <input type="text" name="weight" size="5"> 
+        							Вес: <input type="text"  name="weight" size="5"   onkeyup = 'this.value=parseInt(this.value) | 0'> 
         						</div>
         						<div class="col">
-									Цена: <input type="text" name="price" size="5"> 
+									Цена: <input type="text" name="price" size="5"  onkeyup="validate(this)"> 
 								</div>	
 								</div>
    							<p>Картинка: 
@@ -165,17 +165,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" src="./js/pizza.js"></script>
+<script type="text/javascript" src="./js/verification.js"></script>
 <script type="text/javascript" src="./js/filter.js"></script>
+<script type="text/javascript" src="./js/gallery.js"></script>
 </body>
 </html>

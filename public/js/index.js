@@ -1,5 +1,5 @@
 
-$('#workspace').load('./news.html');
+$('#news').show().load('./news.html');
 $(document).ready(function() {
 	if(localStorage.getItem("login") !== null){
 		$("#buttonLogin").hide();
@@ -74,7 +74,9 @@ $(document).ready(function() {
     	$("#buttonLogin").show();
     	$("#buttonSingUp").show(); 
     	$("#buttonExit").hide(); 
+        $("#open_adminModal").hide();
     	localStorage.clear(); 
+
     });
 
 	saveSignUp.click( function(){ 
@@ -127,22 +129,18 @@ $(document).ready(function() {
     		 	}
     		 	else{
     		 		res.forEach(function(data) {
-            		var login = data.login;
-            		var password = data.password;
-            		var verification  = data.verification;
-            		var rights = data.rights;
-            		var name = data.name;
-            		var client_id = data.client_id;
-        			localStorage.setItem("login", login);
-    		 		localStorage.setItem("password", password);
-    		 		localStorage.setItem("verification", verification);
-    		 		localStorage.setItem("rights", rights);
-    		 		localStorage.setItem("name", name);
-    		 		localStorage.setItem("client_id", client_id);
+        			localStorage.setItem("login", data.login);
+    		 		localStorage.setItem("password", data.password);
+    		 		localStorage.setItem("verification", data.verification);
+    		 		localStorage.setItem("rights", data.rights);
+    		 		localStorage.setItem("name", data.name);
+    		 		localStorage.setItem("client_id", data.client_id);
     		 		$("#buttonLogin").hide();
     		 		$("#buttonSingUp").hide(); 
     		 		$("#buttonExit").show();
     		 		$('#loginModal').modal("hide");
+                    $("#open_adminModal").show();
+                    verification(localStorage.getItem("client_id"), localStorage.getItem("verification"));
     			});  	
     		} 				
 		});
@@ -151,28 +149,37 @@ $(document).ready(function() {
 	function pageLoading(id){
 		switch(id) {
 			case 'li0':  
-				$('#workspace').load('./news.html');
+				$('.workspace').hide();
+                $('#news').show();
     			break;
 			case 'li1':  
-				$('.workspace').load('./pizza.html');
+                $('.workspace').hide();
+                $('#pizza').is(':empty') ? $('#pizza').show().load('./gallery.html') : $('#pizza').show();
     			break;
-			case 'li2':  
-				$('.workspace').load('./paste.html');
+			case 'li2': 
+                $('.workspace').hide();
+                $('#paste').is(':empty') ? $('#paste').show().load('./gallery.html') : $('#paste').show(); 
     			break;
-   	 		case 'li3':  
-				$('.workspace').load('./risotto.html');
+   	 		case 'li3': 
+                
+                $('.workspace').hide();
+                $('#risotto').is(':empty') ? $('#risotto').show().load('./gallery.html') : $('#risotto').show();  
     			break;
     		case 'li4':  
-				$('.workspace').load('./dessert.html');
+                $('.workspace').hide();
+                $('#dessert').is(':empty') ? $('#dessert').show().load('./gallery.html') : $('#dessert').show();
     			break;
-    		case 'li5':  
-				$('.workspace').load('./reviews.html');
+    		case 'li5': 
+                $('.workspace').hide();
+                $('#reviews').is(':empty') ? $('#reviews').show().load('./gallery.html') : $('#reviews').show(); 
     			break;
     		case 'li6':  
-				$('.workspace').load('./basket.html');
+                $('.workspace').hide();
+                $('#basket').is(':empty') ? $('#basket').show().load('./basket.html') : $('#basket').show();
     			break;
-    		case 'li7':  
-				$('.workspace').load('./basket.html');
+    		case 'li7': 
+                $('.workspace').hide();
+                $('#caninet').is(':empty') ? $('#caninet').show().load('./caninet.html') : $('#caninet').show(); 
     			break;
  			default:
 			break;
