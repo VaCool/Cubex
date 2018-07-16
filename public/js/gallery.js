@@ -35,6 +35,7 @@ $(document).ready(function() {
             var previousButton = $('.previousButton');
             var nextButton = $('.nextButton');
             var buttonDo = $('#buttonDo');
+            var buy = $('.buy'); 
            
             if(localStorage.getItem("rights") === "admin"){
                 $("#open_adminModal").show();
@@ -66,6 +67,44 @@ $(document).ready(function() {
                     $("#"+massOfVisibleId[i]).children().clone().addClass("forDelete").appendTo(".forGalley");
                     id = massOfVisibleId[i];
             });
+
+            
+            buy.click(function(event){ 
+    if(localStorage.getItem("login") !== null){
+        var buyName = $("#category").find("h1").text() + ' "' + $(this).parent().find("[data-name-second]").text() + '"';
+        var buyWeight = $(this).parent().parent().find("[data-weight]").text();
+        var buyPrice = $(this).parent().parent().find("[data-price]").text();
+        var buyURL = $(this).parent().parent().find("[data-url-small]").attr("src");
+ 
+        if(localStorage.getItem("buyName") !== null){
+            if(localStorage.getItem("buyName").indexOf(buyName) + 1) {
+                alert("Заказ уже был добавлен в корзину");
+         
+            }
+            else{
+                localStorage.setItem("buyName", localStorage.getItem("buyName") + "," + buyName);
+                localStorage.setItem("buyWeight", localStorage.getItem("buyWeight") + "," + buyWeight);
+                localStorage.setItem("buyPrice", localStorage.getItem("buyPrice") + "," + buyPrice);
+                localStorage.setItem("buyURL", localStorage.getItem("buyURL") + "," + buyURL);
+                localStorage.setItem("quantity", localStorage.getItem("quantity") + "," + "1");
+            }
+        }
+        else{
+            localStorage.setItem("buyName", buyName);
+            localStorage.setItem("buyWeight", buyWeight);
+            localStorage.setItem("buyPrice", buyPrice);
+            localStorage.setItem("buyURL", buyURL);
+            localStorage.setItem("quantity", "1"); 
+        }
+    }
+    else{
+        $('#loginModal').modal("show");
+        $('#forsignUp').hide(); 
+        $('#forLogin').show();
+        $('#login').parent().css({"background":"#826464", "border-bottom-right-radius":"20px", "border-top-right-radius":"20px" }); 
+        $('#signUp').parent().css({"background":"#4c2c2c", "border-radius:":"none" });
+    }
+});
 
             open_modal.click( function(event){ // лoвим клик пo ссылке с клaссoм open_modal
                 $('.forDelete').detach();

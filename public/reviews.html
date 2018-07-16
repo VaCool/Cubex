@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	 <meta charset="utf-8">
+	 	<link rel="stylesheet" type="text/css" href="./css/reviews.css">
+</head>
+<body>
+<h1>Отзывы</h1>
+<div class="giveReviews">
+	 <p><textarea rows="10" cols="45" name="text" id="textarea"></textarea></p>
+	 <button id="send"><i class="fa fa-comment" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Отправить</button>
+</div>
+
+
+<div id="reviews">
+
+</div>
+
+<div style="display:none" id="templateReviews">
+	<div class="elementsReviews">
+		<b><span data-name></span></b>
+		<b><span data-date></span></b>
+		<p data-review></p>
+	</div>
+</div>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="./js/reviews.js"></script>
+
+</body>
+</html>

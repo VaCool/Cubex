@@ -1,0 +1,74 @@
+body{
+	min-width: 1200px;
+font:  Arial, Helvetica, sans-serif, "Arial Narrow";
+	
+}
+.basket p{font-size: 18px;}
+
+.basket ul li {
+  border: groove;
+  margin-top: 30px;
+  border-radius: 10px;
+  list-style-type: none;
+  background: white;
+  width: 100%;
+}
+.basket ul li button{
+	  background: buttonface;
+}
+.basket ul li  .dell{
+	background: red;
+}
+.basket span{
+	font-weight: bolder;
+	font-size: 22px;
+}
+
+.basket .price #dell{
+    display: none;
+}
+
+.basket li:hover .price #dell{
+    display: block;
+}
+
+
+
+.head{
+	margin-left: 10%;
+}
+
+.basket{
+	margin-left: 20%;
+	margin-right: 10%;
+}
+
+.basketRow {
+	width: 100%;
+}
+
+.basketRow .img{
+	padding-left: 50px;
+	width: 35%;
+	display: inline-block;
+}
+
+.basketRow .info{
+	padding-left: 50px;
+	width: 25%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.basketRow .price{
+	width: 25%;
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+	text-align: right;
+	padding-right: 20px;
+}
+
+#order{
+	padding: 10px 10px;
+}

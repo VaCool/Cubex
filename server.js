@@ -367,3 +367,50 @@ function (error, results, fields) {
 });
 
 // конец десертов
+
+
+app.get('/getreviews', function (req, res, next) {
+connection.query('SELECT client.name, reviews.date, reviews.review  FROM client inner join reviews on client.client_id=reviews.client_id;', 
+function (error, results, fields) {
+    if (error) throw error;
+    res.send(results);
+});
+});
+
+
+
+
+
+
+
+
+app.post('/sendreviews', function(req, res, next) {
+  console.log("INSERT INTO reviews VALUES(NULL, NOW(), '" + req.body.review + "', '" + req.body.client_id + "');");
+  connection.query("INSERT INTO reviews VALUES(NULL, NOW(), '" + req.body.review + "', '" + req.body.client_id + "');", 
+function (error, results, fields) {
+    if (error) throw error;
+});
+   res.send('ok')
+});
+
+
+
+
+app.post('/order', function(req, res, next) {
+
+    var name = req.body.name.split(",");
+    var price = req.body.price.split(",");
+
+    console.log(name);
+    console.log(price);
+    console.log(req.body.client_id);
+    console.log(name[0]);
+    for(var i = 0; i < name.length; i++){
+      connection.query("INSERT INTO history VALUES(NULL, '" + name[i] + "', '" + price[i] + "', NOW(), '" + req.body.client_id + "');", 
+function (error, results, fields) {
+    if (error) throw error;
+});
+    }
+
+    res.send('ok')
+});

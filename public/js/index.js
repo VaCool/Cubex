@@ -171,15 +171,15 @@ $(document).ready(function() {
     			break;
     		case 'li5': 
                 $('.workspace').hide();
-                $('#reviews').is(':empty') ? $('#reviews').show().load('./gallery.html') : $('#reviews').show(); 
+                $('#reviews').is(':empty') ? $('#reviews').show().load('./reviews.html') : $('#reviews').show(); 
     			break;
     		case 'li6':  
                 $('.workspace').hide();
-                $('#basket').is(':empty') ? $('#basket').show().load('./basket.html') : $('#basket').show();
+                $('#basket').show().load('./basket.html');
     			break;
     		case 'li7': 
                 $('.workspace').hide();
-                $('#caninet').is(':empty') ? $('#caninet').show().load('./caninet.html') : $('#caninet').show(); 
+                $('#cabinet').is(':empty') ? $('#cabinet').show().load('./сabinet.html') : $('#cabinet').show(); 
     			break;
  			default:
 			break;

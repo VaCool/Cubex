@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<link type="text/css" href="./css/basket.css" rel="stylesheet" media="all" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/basket.js"></script>
+</head>
+<body>
+<div class="head"><h1>Корзина</h1></div>
+<div class="basket">
+
+
+<ul id="purchases">
+
+</ul>
+
+
+	<div id="templateBasket" style="display:none">
+		<div class="elementsBasket" >
+			<li>
+			<div class="basketRow">
+				<div class="img"><img width="250" height="250" src="#" data-url/></div>
+				<div class="info">
+					<p id="name"><span data-name></span></p>
+					<p id="weight">Вес <span data-weight></span> гр.</p>
+					<p id="amount">
+						<button class="minus">-</button>
+    					<input name="inputAmount"  type="text" readonly value="#" data-value size="3" style="text-align:center" />
+    					<button class="plus">+</button>
+					</p>
+				</div>
+				<div class="price">
+					<p id="price"><span id="2" data-price></span> грн. за шт.</p>
+					<p id="dell" ><button class="dell"><i class="fa fa-times " aria-hidden="true"></i></button> - убрать из заказа</p>
+				</div>
+			</div>
+			</li>
+		</div>
+	</div>	
+
+
+
+
+
+<div id="payment">
+	<p>К оплтате: <span data-payment></span> грн.</p>
+	<button id="order"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Заказать</button>
+</div>
+
+
+</div>	
+</body>
+</html>
