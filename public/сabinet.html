@@ -16,17 +16,65 @@
 		  	</div></p>
 		  	</div>
 		  	<div class="col-9">
-		  		<div class="history" style="display: none;">
-		  			
+		  		<div class="history">
+		  			<ul id="historyUl">
+
+					</ul>
 		  		</div>
-		  		<div class="history" style="display: none;">
-		  			
+		  		<div class="settings" style="display: none;">
+		  			<div class="container">
+  						<div class="row">
+        					<div class="col">
+        						<p>E-mail:</p>
+        						<p>Номер телефона:</p>
+        						<p>Пароль:</p>
+        						<p class="repeatPassword" style="display: none;">Поторите пароль:</p>
+        					</div>
+        					<div class="col">
+        						<p><input type="email" name="email" size="20" id="emailSettings" disabled></p>
+        						<p><input type="text" name="phone" size="20" id="phoneSettings" disabled></p>
+        						<p><input type="password" name="password"  id="passwordSettings" size="20" disabled value="******"></p>
+        						<p class="repeatPassword" style="display: none;"><input type="password" name="repeatPassword" size="20" id="repeatPasswordSettings"></p>
+        					</div>        					
+        				</div>
+        				<button type="button" class="btn btn-primary" id="changeSettings">Изменить</button>
+        				<button type="button" class="btn btn-primary" id="saveSettings" style="display: none;">Сохранить</button>
+        			</div>
 		  		</div>
-		  		<div class="history" style="display: none;">
-		  			
+		  		<div class="sale" style="display: none;">
+		  			<h1>Моя скидка</h1>
+		  			<img id="imgSale" />
+		  			<p >Общая сумма заказов: <span id="allSum"></span> грн.</p>
+		  			<p >До следующего уровня скидок: <span id="toNextSale"></span> грн.</p>
 		  		</div>
 		  	</div>
 		  	</div>
+
+
+
+
+		  	<div id="templateHistory" style="display:none">
+				<div class="elementsHistory" >
+					<li>
+						<div class="historyRow">
+							<div class="info">
+								<p ><span data-name></span></p>
+								<p ><span  data-price></span> грн. </p>
+								<p ><span  data-count> шт.</span></p>
+								<p ><span  data-date></span></p>
+							</div>
+						</div>
+					</li>
+				</div>
+			</div>	
+
+
+
+
+
+	<script type="text/javascript" src="./js/сabinet.js"></script>
+
+
 </body>
 </html>
 

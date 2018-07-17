@@ -397,20 +397,38 @@ function (error, results, fields) {
 
 
 app.post('/order', function(req, res, next) {
-
     var name = req.body.name.split(",");
     var price = req.body.price.split(",");
-
-    console.log(name);
-    console.log(price);
-    console.log(req.body.client_id);
-    console.log(name[0]);
+    var count = req.body.count.split(",");
     for(var i = 0; i < name.length; i++){
-      connection.query("INSERT INTO history VALUES(NULL, '" + name[i] + "', '" + price[i] + "', NOW(), '" + req.body.client_id + "');", 
+      connection.query("INSERT INTO history VALUES(NULL, '" + name[i] + "', '" + price[i] + 
+        "', NOW(), '" + count[i] + "', '" + req.body.client_id + "');", 
 function (error, results, fields) {
     if (error) throw error;
 });
     }
 
     res.send('ok')
+});
+
+
+app.post('/gethistory', function (req, res, next) {
+  console.log("hi");
+  console.log(req.body.client_id);
+  connection.query("SELECT client.phone, client.email, history.count, history.name, history.price, history.date  FROM client INNER JOIN history  ON history.client_id = client.client_id WHERE history.client_id =" + req.body.client_id +  ";", 
+  function (error, results, fields) {
+     if (error) throw error; 
+     console.log(results);
+       res.send(results);
+  });
+});
+
+
+app.post('/changeclient', function (req, res, next) {
+  connection.query("UPDATE client  SET  phone = '" + req.body.phone + "', email = '" + req.body.email + "', password = '" + 
+  req.body.password + "' WHERE client_id = " + req.body.client_id +";",
+  function (error, results, fields) {
+     if (error) throw error; 
+       res.send("results");
+  });
 });

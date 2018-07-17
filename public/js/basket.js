@@ -11,7 +11,6 @@ var buyURL;
     else{
 
     }
-    var a  =  buyName;
     var dell = $('.dell'); 
     var order = $('#order'); 
   
@@ -28,19 +27,21 @@ var buyURL;
                             name: localStorage.getItem("buyName"),
                             price: localStorage.getItem("buyPrice"),
                             client_id:  localStorage.getItem("client_id"),
+                            count: localStorage.getItem("quantity"),
                         }
                     }).then(function(res) {
-                        alert("Данные записаны успешно!");
+                        alert('Заказ успешно принят, в течении нескольких минут с вами звяжутся для уточнения деталей. Спасибо за то, что выбрали нас.');
+                        localStorage.removeItem('buyName');
+                        localStorage.removeItem('buyWeight');
+                        localStorage.removeItem('buyPrice');
+                        localStorage.removeItem('buyURL');
+                        $(".elementsBasket").each(function (i) {
+                            $(this).remove();
+                        });
+                        allSum();
+                        $('#cabinet').empty();
                     });
-            alert('Заказ успешно принят, в течении нескольких минут с вами звяжутся для уточнения деталей. Спасибо за то, что выбрали нас.');
-                localStorage.removeItem('buyName');
-                localStorage.removeItem('buyWeight');
-                localStorage.removeItem('buyPrice');
-                localStorage.removeItem('buyURL');
-                $(".elements").each(function (i) {
-                $(this).remove();
-                });
-                allSum();
+ 
         }
     });
     
