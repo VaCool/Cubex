@@ -1,5 +1,4 @@
-body{color: green; min-width: 1200px; }
-h1{margin: 5px; margin-left: 15%;font-size: 38px;}
+h2{margin: 5px; margin-left: 15%;}
 .elements, .giveReviews p{padding-left: 30px;}
 textarea{width: 90%; border: 0; padding: 0; border: groove; border: 2px solid green;}
 .elementsReviews{margin-right: 25%; margin-left: 25%;font: 12px/1.5em Arial, Helvetica, sans-serif, 
@@ -12,3 +11,10 @@ textarea{width: 90%; border: 0; padding: 0; border: groove; border: 2px solid gr
 "Arial Narrow"; padding-top: 10px;margin-bottom: 30px; text-align: center;}
 
 .giveReviews p{padding: 0; margin: 0;}
+#send{
+	padding: 10px 15px;
+  	border-radius: 6px;
+  	border: 0;
+  	margin-top: 15px;
+  	margin-bottom: 15px;
+}

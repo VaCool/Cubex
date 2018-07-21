@@ -6,19 +6,28 @@
 
 </head>
 <body>
-	<div>
-	<button id="open_adminModal" style="display:none">Настройка</button>
+<div class="container">
+      <div class="row">
 
-</div>
-<div id="category">
-     <h1>Пицца</h1>
+        <div class="col-11">
+ <h2 id="categoryPaste" style="display:none">Паста</h2>
+ <h2 id="categoryRisotto"  style="display:none">Ризотто</h2>
+ <h2 id="categoryDessert"  style="display:none">Десерты</h2>
+ <h2 id="categoryPizza"  style="display:none">Пицца</h2>
+ <div id="category" style="display:none">
      <a rel="all" class="current">Все</a> 
      <a rel="first">Мясные</a> 
      <a rel="second">Вегетерианские</a> 
      <a rel="popular">Популярные</a> 
      <a rel="new">Новинки</a> 
 </div>
-
+</div>
+        <div class="col-1">
+  <div style="float: right;">
+   <button id="open_adminModal" style="display:none"><i class="fa fa-cogs" aria-hidden="true">&nbsp;&nbsp;&nbsp;Настройка</i></button>
+  </div>
+</div>
+</div>
 <div class="menu">
 	<ul id="menu">
 		
@@ -31,7 +40,7 @@
 			<a href="#" data-id class="open_modal"><img  src="#" data-url-small title="подробнее" /> </a>
 			<h1 data-name-first class="firstName"></h1>
 			<p>вес: <span data-weight></span> гр. цена <span data-price></span> грн.</p>
-			<button class="buy"><p><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>Хочу!</p></button>
+			<button class="buy"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>Хочу!</button>
  			<div class="forModal" id="#" data-link style="display:none">
  				<div class="forClone">
        			<img src="#" data-url-big title="подробнее" />
@@ -104,6 +113,7 @@
    							<p>Картинка: 
         						<input type="file" name="fileupload-input" /> <br/>
    							</p>
+                <div id="radioCategory" style="display: none;">
    							<div class="row">
    								<div class="col">
    									<div class="row">
@@ -148,11 +158,11 @@
    									</div>
    								</div>
    							</div>
-
+            </div>
 						<span>Состав: </span><textarea type="text" name="consist" cols="40" rows="5"> </textarea> 
 					</form> 
         		</div>
-        		<button id="buttonDo"><p><i class="fa fa-gavel" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;</i>Выполнить</p></button>
+        		<button id="buttonDo"><i class="fa fa-gavel" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;</i>Выполнить</button>
         	</div>	
         </div>
 	</div>

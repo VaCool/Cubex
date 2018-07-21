@@ -7,37 +7,40 @@
     <link rel="stylesheet" type="text/css" href="./css/index.css">  
 </head>
 <body>
+
 	<div class="top">
-	<div class="container">
+    <a href="#" class="scrollup">Наверх</a>
+	  <div class="container">
   		<div class="row">
         <div class="col">
-      			<span id="logo">VaFoods</span>
+      		<span id="logo">VaFoods</span>
     		</div>
     		<div class="col">
     			<div class="phones">
-      				<div class="row">
-      					<div class="col-2">
-                  <p>(050)</p>
-                  <p>(097)</p>
-                  <p>(063)</p>
-      					</div>
-      					<div class="col">
-                  <p id="phone">666-0-777</p>
-      					</div>	
+      			<div class="row">
+      				<div class="col-2">
+                <p>(050)</p>
+                <p>(097)</p>
+                <p>(063)</p>
       				</div>
-            </div>	
-          </div>
+      				<div class="col">
+                <p id="phone">666-0-777</p>
+      				</div>	
+      			</div>
+          </div>	
+        </div>
     		<div class="col">
     			<div class="enter">
-      			<button id="buttonLogin"><p><i class="fa fa-sign-in " aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>Вход</p></button>
-				    <button id="buttonSingUp"><p><i class="fa fa-id-card" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Регистрация</p></button>
-				    <button id="buttonExit" style="display:none"><p><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Выход</p></button>
+      			<button id="buttonLogin"><i class="fa fa-sign-in " aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>Вход</button>
+				    <button id="buttonSingUp"><i class="fa fa-id-card" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Регистрация</button>
+				    <button id="buttonExit" style="display:none"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Выход</button>
 				  </div>
     		</div>
   		</div>
     </div>
     <div class="navbar">
-		  <p><div class="btn-group btn-group-lg" role="group" >
+		  <p>
+        <div class="btn-group btn-group-lg" role="group" >
   			   <button type="button" id="li0" class="btn btn-success">Главная</button>
   			   <button type="button" id="li1" class="btn btn-success">Пицца</button>
   			   <button type="button" id="li2" class="btn btn-success">Паста</button>
@@ -46,12 +49,12 @@
   			   <button type="button" id="li5" class="btn btn-success">Отзывы</button>
   			   <button type="button" id="li6" class="btn btn-success">Корзина</button>
   			   <button type="button" id="li7" class="btn btn-success">Кабинет</button>
-
-		  </div></p>
+		    </div>
+      </p>
     </div>
   </div>
-x
-  <div class="empty">&nbsp; &nbsp;</div>
+
+
     <div  class="workspace" id="news" style="display:none"> </div>
     <div  class="workspace" id="pizza" style="display:none"></div>
     <div  class="workspace" id="paste" style="display:none"></div>
@@ -60,7 +63,7 @@ x
     <div  class="workspace" id="reviews" style="display:none"></div>
     <div  class="workspace" id="basket" style="display:none"></div>
     <div  class="workspace" id="cabinet" style="display:none"></div>
-  </div>
+ 
   
 
 
@@ -89,11 +92,11 @@ x
           <div id="forsignUp" style="display:none">
             <div class="row">
               <div class="col-6"><span>Имя:</span></div> <div class="col-6"><input type="text" name="name" size="20"></div>
-              <div class="col-6""><span>Логин:</span></div> <div class="col-6""><input type="text" name="login" size="20"> </div>
-              <div class="col-6""><span>Пароль:</span></div> <div class="col-6""><input type="password" name="password" size="20"></div>
-              <div class="col-6""><span>Поторите пароль:</span></div> <div class="col-6""><input type="password" name="repeatPassword" size="20"></div>
-              <div class="col-6""><span>E-mail:</span></div> <div class="col-6""><input type="email" name="email" size="20"></div>
-              <div class="col-6""><span>Номер телефона:</span></div> <div class="col-6""><input type="text" name="phone" size="20"></div>
+              <div class="col-6"><span>Логин:</span></div> <div class="col-6"><input type="text" name="login" size="20"> </div>
+              <div class="col-6"><span>Пароль:</span></div> <div class="col-6"><input type="password" name="password" size="20"></div>
+              <div class="col-6"><span>Поторите пароль:</span></div> <div class="col-6"><input type="password" name="repeatPassword" size="20"></div>
+              <div class="col-6"><span>E-mail:</span></div> <div class="col-6"><input type="email" name="email" size="20"></div>
+              <div class="col-6"><span>Номер телефона:</span></div> <div class="col-6"><input type="text" name="phone" size="20"></div>
             </div>
             <div class="forMiddleButton"><button type="button" class="btn btn-primary" id="saveSignUp">Регистрация</button></div>
           </div>

@@ -2,6 +2,49 @@
    display: inline-block;
    width: 25%;
 }
+.buy, #buttonDo , #open_adminModal{
+  background: green;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+#open_adminModal{
+  background: red;
+  }
+#category {margin-right: 7%; margin-left: 7%; color: red;}
+#categoryPaste,#categoryRisotto, #categoryDessert, #categoryPizza {color: green; margin-left: 7%;}
+#category a { padding: 2px 6px; border: 1px solid #A74C10; }
+#category a:hover, #category a.current { background: #A74C10; color: white; }
+@media screen and (min-width:750px) and (max-width:1023px) {
+.elements{
+   display: inline-block;
+   width: 33%;
+}
+.elements h1{
+  font-size: 30px;
+}
+}
+@media screen  and (max-width:749px) {
+.elements{
+   display: inline-block;
+   width: 50%;
+}
+.elements h1{
+  font-size: 25px;
+}
+.buy{
+  margin-top: 0;
+  font-size: 70%;
+}
+#category{
+  font-size: 80%;
+}
+#open_adminModal{
+  font-size: 80%;
+}
+}
  .menu ul, li {
     display: inline-block;
     vertical-align: top;
@@ -23,10 +66,7 @@ img { max-width: 100%; }
 
 }
 
-#category {margin-right: 7%; margin-left: 7%; color: red;}
-#category h1{color: green; font-size: 350%;margin-left: 0;}
-#category a { padding: 2px 6px; border: 1px solid #A74C10; }
-#category a:hover, #category a.current { background: #A74C10; color: white; }
+
 
 .nextPrev a {
     text-decoration: none;
@@ -51,3 +91,23 @@ img { max-width: 100%; }
     border-radius: 50%;
 }
 
+
+
+.adminContent input{
+  height:25px;
+}
+.adminContent p{
+  margin-top: 10px;
+}
+
+
+#contentTitle{
+   height:30px;
+}
+
+#forAddContainer{
+  margin-bottom: 5px;
+}
+#adminModal .modal-content{
+  background: #8ab379;
+}

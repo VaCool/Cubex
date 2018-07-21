@@ -1,3 +1,9 @@
+html{
+	min-width: 550px;
+}
+body{
+	background: #21ff1e26;
+}
 @font-face {
   font-family: 'Vanessa';
   src: url('../fonts/Vanessa.eot?#iefix') format('embedded-opentype'),  url('../fonts/Vanessa.woff') format('woff'), 
@@ -5,23 +11,47 @@
   font-weight: normal;
   font-style: normal;
 }
+h2{
+	font-size: 38px;
+}
 .container{
 	margin-bottom: -20px;
+	max-width: 100%;
 }
 .top {
-
-	position:fixed;
 	top:0;
 	width: 100%;
 	background: orange;
-
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 30px;
+	margin-bottom: 15px;
 }
 .navbar p{
 	text-align: center;
 }
+button{
+	background: red;
+	color: white;	
+}
 
+.phones p{
+	margin: 0;
+}
+@media screen and (min-width:1024px) and (max-width:1366px) {
+#phone{
+	display: inline-block;
+	font-size: 54px;
+	vertical-align: middle;
+	margin-top: -10px;
+}
+.btn-group-lg>.btn, .enter button{
+	padding: 10px 15px;
+	border-radius: 6px;
+	border: 0;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 18px;	
+}
 #logo{
 	max-width: 90%;
 	font-family: 'Vanessa';
@@ -29,36 +59,157 @@
 	color: #d20073;
 	font-size: 400%;
 	display: inline-block;
-	width: 30%;
 	text-align: center;
 }
-.phones p{
-	margin: 0;
 }
+@media screen and (min-width:800px) and (max-width:1023px) {
 #phone{
 	display: inline-block;
-	font-size: 60px;
-	vertical-align: top;
-	margin-top: -10px;
+	font-size: 40px;
+	vertical-align: middle;
+	text-align: center;
 }
-
-.enter p{
-	margin: 5px;
-}
-.enter button{
-	background: red;
-	color: white;
+.btn-group-lg>.btn, .enter button{
 	padding: 5px 10px;
 	border-radius: 6px;
 	border: 0;
 	margin-top: 15px;
 	margin-bottom: 15px;
-	font-size: 18px;	
+	font-size: 15px;	
+}
+#logo{
+	max-width: 90%;
+	font-family: 'Vanessa';
+	font-weight: 500;
+	color: #d20073;
+	font-size: 300%;
+	display: inline-block;
+	text-align: center;
+}
+p{
+	font-size: 90%;
+}
+}
+@media screen and (min-width:700px) and (max-width:799px) {
+#phone{
+	display: inline-block;
+	font-size: 34px;
+	vertical-align: middle;
+	text-align: center;
+}
+.btn-group-lg>.btn, .enter button{
+	padding: 5px 10px;
+	border-radius: 6px;
+	border: 0;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 13px;	
+}
+#logo{
+	max-width: 90%;
+	font-family: 'Vanessa';
+	font-weight: 500;
+	color: #d20073;
+	font-size: 250%;
+	display: inline-block;
+	text-align: center;
+}
+p{
+	font-size: 80%;
+}
+}
+@media screen and (min-width:650px) and (max-width:699px) {
+#phone{
+	display: inline-block;
+	font-size: 30px;
+	vertical-align: middle;
+	text-align: center;
+}
+.btn-group-lg>.btn, .enter button{
+	padding: 5px 10px;
+	border-radius: 6px;
+	border: 0;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 11px;	
+}
+#logo{
+	max-width: 90%;
+	font-family: 'Vanessa';
+	font-weight: 500;
+	color: #d20073;
+	font-size: 200%;
+	display: inline-block;
+	text-align: center;
+}
+p{
+	font-size: 70%;
+}
+}
+@media screen and (min-width:600px) and (max-width:649px) {
+#phone{
+	display: inline-block;
+	font-size: 25px;
+	vertical-align: middle;
+	text-align: center;
+}
+.btn-group-lg>.btn, .enter button{
+	padding: 5px 10px;
+	border-radius: 6px;
+	border: 0;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 10px;	
+}
+#logo{
+	max-width: 90%;
+	font-family: 'Vanessa';
+	font-weight: 500;
+	color: #d20073;
+	font-size: 180%;
+	display: inline-block;
+	text-align: center;
+}
+p{
+	font-size: 60%;
+}
+}
+@media screen and (max-width:599px) {
+#phone{
+	display: inline-block;
+	font-size: 25px;
+	vertical-align: middle;
+	text-align: center;
+}
+.btn-group-lg>.btn, .enter button{
+	padding: 5px 10px;
+	border-radius: 6px;
+	border: 0;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 9px;	
+}
+#logo{
+	max-width: 90%;
+	font-family: 'Vanessa';
+	font-weight: 500;
+	color: #d20073;
+	font-size: 170%;
+	display: inline-block;
+	text-align: center;
+}
+p{
+	font-size: 55%;
+}
+}
+.enter p{
+	margin: 5px;
+}
 
 }
 
 .empty{
-	height: 150px;
+	
 }
 
 .navbarRegistration{
@@ -108,3 +259,15 @@
 	color: #999999;
  	text-decoration: none;
 }
+.scrollup{
+width:40px;
+height:40px;
+opacity:0.3;
+position:fixed;
+bottom:50px;
+right:100px;
+display:none;
+text-indent:-9999px;
+background: url('../img/up.png') no-repeat;
+}
+

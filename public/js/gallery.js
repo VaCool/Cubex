@@ -5,6 +5,26 @@
     var contentName;
 $(document).ready(function() {
     contentName = $(".workspace").not(":hidden").prop("id");
+
+    switch(contentName){
+        case 'pizza':  
+            $('#pizza').find('#categoryPizza').show();
+            $('#pizza').find('#category').show();
+            break;
+        case 'paste':  
+            $('#paste').find('#categoryPaste').show();
+            break;
+        case 'risotto':  
+            $('#risotto').find('#categoryRisotto').show();
+            break;
+        case 'dessert':  
+            $('#dessert').find('#categoryDessert').show();
+            break;                        
+    }
+
+
+
+
     getGallery();
     function getGallery(){
         $.ajax({
@@ -14,7 +34,6 @@ $(document).ready(function() {
             var $contentWrapper = $(".workspace").not(":hidden").find("#menu");
             contentGallery.forEach(function(content) {
                 var $contentTemplate =  $(".workspace").not(":hidden").find("#template").find(".elements").clone();
-                console.log($contentTemplate);
                 $contentTemplate.find("[data-class]").attr("class","category " + content.categories);
                 $contentTemplate.find("[data-id]").attr("href","#" + "modalId" + content[contentName + "_id"] );
                 $contentTemplate.find("[data-url-small]").attr("src", content.URL);
@@ -26,23 +45,32 @@ $(document).ready(function() {
                 $contentTemplate.find("[data-name-second]").text(content.name);
                 $contentTemplate.find("[data-consist]").text(content.consist);              
                 $contentWrapper.append($contentTemplate);
-                massOfAllId[i] = "#" + "modalId" + content[contentName + "_id"];
-                massOfAllNames[i] = content.name;
-                i++;
             });
-            var open_modal = $('.open_modal');
-            var open_adminModal = $('#open_adminModal');
-            var previousButton = $('.previousButton');
-            var nextButton = $('.nextButton');
-            var buttonDo = $('#buttonDo');
-            var buy = $('.buy'); 
+
+            function getMassOfAllId(){
+                $('#' + contentName).find(".forModal").each(function (i) {
+                        massOfAllId.push($(this).attr('id'));
+                });
+            }           
+
+            function getMassOfAllNames(){
+                $('#' + contentName).find(".forModal").each(function (i) {
+                        massOfAllNames.push($(this).find("[data-name-second]").text());
+                });
+            }   
+            var open_modal = $('#' + contentName).find('.open_modal');
+            var open_adminModal = $('#' + contentName).find('#open_adminModal');
+            var previousButton = $('#' + contentName).find('.previousButton');
+            var nextButton = $('#' + contentName).find('.nextButton');
+            var buttonDo = $('#' + contentName).find('#buttonDo');
+            var buy = $('#' + contentName).find('.buy'); 
            
             if(localStorage.getItem("rights") === "admin"){
-                $("#open_adminModal").show();
+                $('#' + contentName).find("#open_adminModal").show();
             }
 
             function getMassId(){
-                $(".forModal").each(function (i) {
+                $('#' + contentName).find(".forModal").each(function (i) {
                     if ($(this).parent().is(":visible")){
                         massOfVisibleId.push($(this).attr('id'));
                     }
@@ -53,8 +81,8 @@ $(document).ready(function() {
                 getMassId();
                 i = $.inArray(id, massOfVisibleId)
                     i==0 ? i=massOfVisibleId.length-1: i--;
-                    $('.forDelete').detach();
-                    $("#"+massOfVisibleId[i]).children().clone().addClass("forDelete").appendTo(".forGalley");
+                    $('#' + contentName).find('.forDelete').detach();
+                    $('#' + contentName).find("#"+massOfVisibleId[i]).children().clone().addClass("forDelete").appendTo(".forGalley");
                     id = massOfVisibleId[i];
             });
 
@@ -63,8 +91,8 @@ $(document).ready(function() {
                 getMassId();
                 i = $.inArray(id, massOfVisibleId)
                     i==massOfVisibleId.length-1 ? i=0 : i++;
-                    $('.forDelete').detach();
-                    $("#"+massOfVisibleId[i]).children().clone().addClass("forDelete").appendTo(".forGalley");
+                    $('#' + contentName).find('.forDelete').detach();
+                    $('#' + contentName).find("#"+massOfVisibleId[i]).children().clone().addClass("forDelete").appendTo(".forGalley");
                     id = massOfVisibleId[i];
             });
 
@@ -107,39 +135,51 @@ $(document).ready(function() {
 });
 
             open_modal.click( function(event){ // лoвим клик пo ссылке с клaссoм open_modal
-                $('.forDelete').detach();
-                $('#galleryModal').modal("show");
+                contentName = $(".workspace").not(":hidden").prop("id");
+                $('#' + contentName).find('.forDelete').detach();
+                $('#' + contentName).find('#galleryModal').modal("show");
                 id = ($(this).parent().find('.forModal').attr( "id"));
                 $(this).parent().find('.forClone').clone().addClass("forDelete").appendTo(".forGalley");
             });
 
-            open_adminModal.click( function(event){ // лoвим клик пo ссылке с клaссoм open_modal        
-                $('.forDelete').detach();
+            open_adminModal.click( function(event){ // лoвим клик пo ссылке с клaссoм open_modal
+             contentName = $(".workspace").not(":hidden").prop("id");
+             massOfAllId= [];
+             massOfAllNames= [];
+             getMassOfAllNames();     
+             getMassOfAllId();
+             massOfAllNames.pop();
+             massOfAllId.pop();
+                $('#' + contentName).find('.forDelete').detach();
                 id = ($(this).parent().find('.forModal').attr( "id"));
                 $(this).parent().find('.forClone').clone().addClass("forDelete").appendTo(".forGalley");
-                $("#contentTitle").empty();
+                $('#' + contentName).find("#contentTitle").empty();
                 verification(localStorage.getItem("client_id"), localStorage.getItem("verification"));
-                $('#adminModal').modal("show");
+                $('#' + contentName).find('#adminModal').modal("show");
                 for(i = 0; i < massOfAllId.length; i++){
-                    $("#contentTitle").prepend( $('<option value="' + massOfAllId[i] + '">' + massOfAllNames[i] 
-                    + '</option>'));
+                    $('#' + contentName).find("#contentTitle").prepend( $('<option value="' + massOfAllId[i] + '">' + massOfAllNames[i] 
+                    + '</option>'));              
                 }
+                 if(contentName === "pizza"){
+                    $(radioCategory).show();
+                } 
             });
 
-            $('#addContent').click( function(event){ // лoвим клик пo ссылке с клaссoм open_modal
-                $("#contentTitle").attr("disabled",true);
+            $('#' + contentName).find('#addContent').click( function(event){ // лoвим клик пo ссылке с клaссoм open_modal
+                $('#' + contentName).find("#contentTitle").attr("disabled",true);
             });
 
              function changeSelect(){
-                $("#adminModal").find("input[name ='name']").val($($("#contentTitle :selected")
+                $('#' + contentName).find("#adminModal").find("input[name ='name']").val($('#' + contentName).find('#' + $('#' + contentName).find("#contentTitle :selected")
                     .val()).parent().find("[data-name-first]").text());
-                $("#adminModal").find("input[name ='weight']").val($($("#contentTitle :selected")
+                $('#' + contentName).find("#adminModal").find("input[name ='weight']").val($('#' + contentName).find('#' + $('#' + contentName).find("#contentTitle :selected")
                     .val()).parent().find("[data-weight]").text());
-                $("#adminModal").find("input[name ='price']").val($($("#contentTitle :selected")
+                $('#' + contentName).find("#adminModal").find("input[name ='price']").val($('#' + contentName).find('#' + $('#' + contentName).find("#contentTitle :selected")
                     .val()).parent().find("[data-price]").text());
-                $("#adminModal").find("textarea[name ='consist']").val($($("#contentTitle :selected")
+                $('#' + contentName).find("#adminModal").find("textarea[name ='consist']").val($('#' + contentName).find('#' + $('#' + contentName).find("#contentTitle :selected")
                     .val()).parent().find("[data-consist]").text());
-                var className = $($("#contentTitle :selected")
+                
+                var className = $('#' + $('#' + contentName).find("#contentTitle :selected")
                     .val()).parent().parent().find("[data-class]").attr("class");
                 if(className.indexOf('first') + 1) {
                     $("#adminModal").find("input[name ='first']").prop("checked",true);
@@ -155,20 +195,20 @@ $(document).ready(function() {
                 }            
             }
 
-            $('#changeContent').click( function(event){ // лoвим клик пo ссылке с клaссoм open_modal               
-                $("#contentTitle").attr("disabled",false);
+            $('#' + contentName).find('#changeContent').click( function(event){ // лoвим клик пo ссылке с клaссoм open_modal               
+                $('#' + contentName).find("#contentTitle").attr("disabled",false);
                 changeSelect();
             });
 
-            $('#dellContent').click( function(event){ // лoвим клик пo ссылке с клaссoм open_modal               
-                $("#contentTitle").attr("disabled",false);
+            $('#' + contentName).find('#dellContent').click( function(event){ // лoвим клик пo ссылке с клaссoм open_modal               
+                $('#' + contentName).find("#contentTitle").attr("disabled",false);
             });
 
-            $("#contentTitle").change(function() {
-                $("#adminModal").find("input[name ='first']").prop("checked",false);
-                $("#adminModal").find("input[name ='second']").prop("checked",false);
-                $("#adminModal").find("input[name ='popular']").prop("checked",false);
-                $("#adminModal").find("input[name ='new']").prop("checked",false);
+            $('#' + contentName).find("#contentTitle").change(function() {
+                $('#' + contentName).find("#adminModal").find("input[name ='first']").prop("checked",false);
+                $('#' + contentName).find("#adminModal").find("input[name ='second']").prop("checked",false);
+                $('#' + contentName).find("#adminModal").find("input[name ='popular']").prop("checked",false);
+                $('#' + contentName).find("#adminModal").find("input[name ='new']").prop("checked",false);
                 changeSelect();
             });
 
@@ -179,13 +219,13 @@ $(document).ready(function() {
             
 
 
-               if($('#addContent').hasClass('active')){
+               if($('#' + contentName).find('#addContent').hasClass('active')){
                     addContent();
                 }
-                if($('#changeContent').hasClass('active')){
+                if($('#' + contentName).find('#changeContent').hasClass('active')){
                     changeContent();
                 }
-                if($('#dellContent').hasClass('active')){
+                if($('#' + contentName).find('#dellContent').hasClass('active')){
                     dellContent();
                 }
                    
